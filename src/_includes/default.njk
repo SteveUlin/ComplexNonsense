@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="autor" content="Steven Ulin">
+    {% if title %}
+      <title>Complex Nonsense - {{ title }}</title>
+    {% else %}
+      <title>Complex Nonsense</title>
+    {% endif %}
+    {% if description %}
+      <meta name="description" content="{{ description }}">
+    {% endif %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/tailwind.css"/>
+    <link rel="stylesheet" href="/css/prism.css">
+  </head>
+
+  
+  <body class="bg-slate-300">
+    <div class="container p-5 mx-auto max-w-5xl min-h-screen bg-slate-50">
+      {% include "nav.njk" %}
+      {{ content | safe }}
+      <div class="h-96"></div>
+      <script src="/js/app.js"></script>
+    </div>
+  </body>
+</html>
