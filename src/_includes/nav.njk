@@ -1,0 +1,54 @@
+{% macro nav_item(href, text) %}
+  <li class="group transition duration-700 ease-in-out hover:-translate-y-1">
+    <a class="text-xl" href="{{ href }}">{{ text }}</a>
+    <div
+    class="h-1 w-0 bg-gray-800 transition-[width] duration-700 ease-in-out group-hover:w-full"
+  ></div>
+  </li>
+{% endmacro %}
+
+<nav>
+  <div class="max-md:hidden">
+    <!-- Large Screen Nav -->
+    <div class="flex justify-between align-middle">
+      <div class="font-sans text-2xl font-bold">Complex Nonsense. 🙃</div>
+      <ul class="flex space-x-10">
+        {{ nav_item(href='#', text='Home') }}
+        {{ nav_item(href='#', text='Blog') }}
+        {{ nav_item(href='#', text='About') }}
+    </ul>
+  </div>
+  <div class="mt-2 h-2 bg-gray-900"></div>
+</div>
+<!-- Hamburger Nav -->
+<div class="md:hidden container mx-auto align-middle lg:hidden">
+  <div class="flex justify-between">
+    <div class="font-sans text-2xl font-bold">Complex Nonsense. 🙃</div>
+    <button id="hamburger" class="space-y-1 pr-2">
+      <div class="h-0.5 w-5 bg-gray-900"></div>
+      <div class="h-0.5 w-5 bg-gray-900"></div>
+      <div class="h-0.5 w-5 bg-gray-900"></div>
+    </button>
+  </div>
+  <div class="mt-2 h-2 w-full bg-gray-900"></div>
+  <div id="menu" class="hidden">
+    <ul class="w-full text-2xl font-sans">
+      <li>
+        <a class="block border-b-2 border-gray-900 px-6 py-2" href="#"
+            >Home</a
+          >
+      </li>
+      <li>
+        <a class="block border-b-2 border-gray-900 px-6 py-2" href="#"
+            >Blog</a
+          >
+      </li>
+      <li>
+        <a class="block border-b-2 border-gray-900 px-6 py-2" href="#"
+            >About</a
+          >
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>

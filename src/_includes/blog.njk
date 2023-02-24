@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<h1 class="pt-5 px-2 text-4xl text-slate font-sans font-bold">{{ title }}</h1>
+<p class="px-8 text-2xl text-slate-600 font-sans font-bold">{{ date | date }}</p>
+{% if hero %}
+  <img src="../../img/{{ hero }}" alt="{{ title }}"
+  class="object-cover w-max my-2 rounded-[80px] border-slate-900 border-8"/>
+{% endif %}
+<article class="mt-7 px-5 prose sm:prose-md lg:prose-md">
+  {% if description %}
+    <h2>tldr;</h2>
+    <p>{{ description }}</p>
+  {% endif %}
+  {{ content | safe }}
+</article>
