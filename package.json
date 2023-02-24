@@ -7,7 +7,10 @@
     "clean" : "rm -rf _site",
     "serve:eleventy": "eleventy --serve",
     "serve:tailwind": "tailwindcss -i styles/tailwind.css -c styles/tailwind.config.js -o _site/css/tailwind.css --watch",
-    "serve": "npm-run-all clean --parallel serve:*"
+    "serve": "npm-run-all clean --parallel serve:*",
+    "build:eleventy": "eleventy",
+    "build:tailwind": "tailwindcss -i styles/tailwind.css -c styles/tailwind.config.js -o _site/css/tailwind.css",
+    "build": "npm-run-all clean build:eleventy build:tailwind"
   },
   "repository": {
     "type": "git"
