@@ -2,16 +2,20 @@
 layout: default
 ---
 
-<h1 class="pt-5 px-2 text-4xl text-slate font-sans font-bold">{{ title }}</h1>
-<p class="px-8 text-2xl text-slate-600 font-sans font-bold">{{ date | date }}</p>
-{% if hero %}
-  <img src="../../img/{{ hero }}" alt="{{ title }}"
-  class="object-cover w-max my-2 rounded-[80px] border-slate-900 border-8"/>
-{% endif %}
-<article class="mt-7 px-5 prose sm:prose-md lg:prose-md">
-  {% if description %}
-    <h2>tldr;</h2>
-    <p>{{ description }}</p>
-  {% endif %}
-  {{ content | safe }}
-</article>
+<div class="max-w-3xl mx-3">
+  <!-- title -->
+  <div class="p-3 md:mb-3 md:rounded bg-slate-50 shadow-md">
+    <h1 class="text-4xl text-slate font-sans font-bold">{{ title }}</h1>
+    <p class="px-8 text-2xl text-slate-600 font-sans font-bold">{{ date | date }}</p>
+  </div>
+  <article class="p-3 max-w-none prose sm:prose-md md:mb-3 md:rounded bg-slate-50 shadow-md">
+    {% if tldr%}
+      <h2>tldr;</h2>
+      <p>{{ tldr }}</p>
+    {% endif %}
+    {% if series %}
+      <p>Part of the <a href="/series/{{ series }}">{{ series }}</a> series.</p>
+    {% endif %}
+    {{ content | safe }}
+  </article>
+</div>

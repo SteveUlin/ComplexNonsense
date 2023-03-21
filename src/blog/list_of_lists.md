@@ -6,6 +6,9 @@
 ### Smallest Range Covering Elements from K Lists
 https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/
 
+### Min Cost to Connect All Points
+https://leetcode.com/problems/min-cost-to-connect-all-points/
+
 ## Books
 
 ### Computer Science

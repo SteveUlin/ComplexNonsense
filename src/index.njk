@@ -1,0 +1,26 @@
+---
+layout: default
+eleventyImport:
+  collections: ["post"]
+---
+<div class="md:mx-3 md:mb-3 p-3 md:rounded bg-slate-50 text-lg shadow-md">
+  Math, Compute, and Distributed Systems.
+</div>
+<div class="flex">
+  <!-- Card listing recent blogposts -->
+  <div class="md:mx-3 p-3 max-w-xl md:rounded bg-slate-50 text-lg shadow-md">
+    <h2 class="text-2xl font-bold">Recent Blogposts</h2>
+    {% for post in collections.post %}
+      <a class="block p-3" href="{{ post.url }}">
+        <h3 class="text-xl font-bold">
+          {{ post.data.title }}
+          <span class="text-sm text-gray-600 font-light">{{ post.date | date }}</span>
+          {% if post.data.series %}
+            <p class="text-sm text-gray-900 pl-3">{{ post.data.series }}</p>
+          {% endif %}
+        </h3>
+        <p class="pl-3">{{ post.data.tldr}}</p>
+      </a>
+    {% endfor %}
+  </div>
+</div>

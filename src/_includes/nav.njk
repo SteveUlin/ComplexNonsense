@@ -8,22 +8,21 @@
 {% endmacro %}
 
 <nav>
-  <div class="max-md:hidden">
-    <!-- Large Screen Nav -->
+  <!-- Large Screen Nav -->
+  <div class="max-md:hidden m-3 p-4 rounded bg-slate-50 shadow-md">
     <div class="flex justify-between align-middle">
-      <div class="font-sans text-2xl font-bold">Complex Nonsense. 🙃</div>
+      <a class="font-sans text-2xl font-bold" href="/">Complex Nonsense. 🙃</a>
       <ul class="flex space-x-10">
-        {{ nav_item(href='#', text='Home') }}
-        {{ nav_item(href='#', text='Blog') }}
-        {{ nav_item(href='#', text='About') }}
+        {{ nav_item(href='/', text='Home') }}
+        {{ nav_item(href='/blog', text='Blog') }}
+        {{ nav_item(href='/about', text='About') }}
     </ul>
   </div>
-  <div class="mt-2 h-2 bg-gray-900"></div>
 </div>
 <!-- Hamburger Nav -->
-<div class="md:hidden container mx-auto align-middle lg:hidden">
+<div class="md:hidden p-3 mx-auto align-middle lg:hidden bg-slate-50">
   <div class="flex justify-between">
-    <div class="font-sans text-2xl font-bold">Complex Nonsense. 🙃</div>
+    <a class="font-sans text-2xl font-bold" href="/">Complex Nonsense. 🙃</a>
     <button id="hamburger" class="space-y-1 pr-2">
       <div class="h-0.5 w-5 bg-gray-900"></div>
       <div class="h-0.5 w-5 bg-gray-900"></div>
@@ -34,17 +33,17 @@
   <div id="menu" class="hidden">
     <ul class="w-full text-2xl font-sans">
       <li>
-        <a class="block border-b-2 border-gray-900 px-6 py-2" href="#"
+        <a class="block border-b-2 border-gray-900 px-6 py-2" href="/"
             >Home</a
           >
       </li>
       <li>
-        <a class="block border-b-2 border-gray-900 px-6 py-2" href="#"
+        <a class="block border-b-2 border-gray-900 px-6 py-2" href="blog"
             >Blog</a
           >
       </li>
       <li>
-        <a class="block border-b-2 border-gray-900 px-6 py-2" href="#"
+        <a class="block border-b-2 border-gray-900 px-6 py-2" href="about"
             >About</a
           >
       </li>

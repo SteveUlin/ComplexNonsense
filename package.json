@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean" : "rm -rf _site",
+    "clean": "rm -rf _site",
     "serve:eleventy": "eleventy --serve",
     "serve:tailwind": "tailwindcss -i styles/tailwind.css -c styles/tailwind.config.js -o _site/css/tailwind.css --watch",
     "serve": "npm-run-all clean --parallel serve:*",
@@ -28,6 +28,7 @@
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.2.3",
     "prism-themes": "^1.9.0",
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.2.7",
+    "mini-svg-data-uri": "^1.4.4"
   }
 }
