@@ -200,3 +200,12 @@ problems but also implementing a solution. I hope to continue this format
 in the future.
 
 Thanks for reading!
+
+## References
+
+- [Byte Byte Go](https://bytebytego.com/)
+- [Wikipedia](https://en.wikipedia.org/wiki/Content_delivery_network)
+- [AWS Amplify](https://aws.amazon.com/amplify/)
+- [Eleventy](https://www.11ty.dev)
+- [Tailwindcss](https://tailwindcss.com/)
+- [Load Balancing Without Load Balancers](https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p/)
