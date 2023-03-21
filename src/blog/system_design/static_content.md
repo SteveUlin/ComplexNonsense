@@ -1,5 +1,5 @@
 ---
-title: How to Serve a Global Website Quickly?
+title: How would you make a website blazingly fast!?
 date: 2023-02-22
 tldr:
   In this article, I provide an overview of Content Delivery Networks (CDNs).
