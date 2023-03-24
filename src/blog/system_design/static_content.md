@@ -20,7 +20,7 @@ domain name to an IP address like '142.251.32.46'. These mapping are stored in a
 are globally distributed and owned by a number of different companies.
 The closer you are to a DNS server, the faster the lookup will be.
 
-We can check the time it takes to resolve the IP address of 'google.com' using
+We can measure the time it takes to resolve the IP address of 'google.com' using
 the DNS lookup utility `dig`.
 
 ```shell

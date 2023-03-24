@@ -14,10 +14,10 @@ eleventyImport:
       <a class="block p-3" href="{{ post.url }}">
         <h3 class="text-xl font-bold">
           {{ post.data.title }}
-          <span class="text-sm text-gray-600 font-light">{{ post.date | date }}</span>
           {% if post.data.series %}
             <p class="text-sm text-gray-900 pl-3">{{ post.data.series }}</p>
           {% endif %}
+          <p class="pl-3 text-sm text-gray-600 font-light">{{ post.date | date }}</p>
         </h3>
         <p class="pl-3">{{ post.data.tldr}}</p>
       </a>
