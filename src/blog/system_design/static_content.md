@@ -1,4 +1,5 @@
 ---
+title: Making Your Website Blazingly Fast with Content Delivery Networks and AWS Amplify
 title: How would you make a website blazingly fast!?
 date: 2023-02-22
 tldr:
@@ -24,7 +25,7 @@ We can measure the time it takes to resolve the IP address of 'google.com' using
 the DNS lookup utility `dig`.
 
 ```shell
-$ dig @1.1.1.1 google.com                               (base) 
+$ dig @1.1.1.1 google.com                               (base)
 
 ; <<>> DiG 9.18.1-1ubuntu1.3-Ubuntu <<>> @1.1.1.1 google.com
 ; (1 server found)
@@ -94,88 +95,41 @@ $ traceroute to google.com (172.217.16.238), 30 hops max, 60 byte packets
 
 It takes a total of 23 hops to get to google.com from my EC2 instance in London.
 
-### Decreasing latency (CDNs)
+### Content Delivery Networks (CDNs)
 
-If you live in Singapore and are trying to connect to a website that is hosted
-in the US, there will be a lot of hops. These hops cause excessive latency.
+A Content Delivery Network (CDN) is a system of distributed servers that deliver web content to users based on their geographic location. The main goal of a CDN is to serve content to users as quickly and efficiently as possible. By caching and serving content from servers closer to users, CDNs can significantly reduce latency and improve website performance
 
-To solve this problem, companies started setting up small datacenters around the
-world. These datacenters are called Points of Presence of a [Content Delivery
-Network](https://en.wikipedia.org/wiki/Content_delivery_network) or CDN.
+## AWS Amplify
 
-Instead of serving data from one location, a CDN will serve data from a
-hopefully closer Point of Presence, reducing latency.
+[AWS Amplify](https://aws.amazon.com/amplify/) is a set of tools and services
+that help you build, deploy, and host scalable and fast web applications. In
+this example, we will create a simple static website (this website) and deploy
+it to AWS S3 and the AWS CloudFront CDN using AWS Amplify.
 
-The storage space in these Points of Presence is valuable. So instead
-of storing data indefinitely at these Points of Presence, CDN usually
-only cache content. The result being, as traffic volume increase you
-will see a decrease in latency.
+You can view the code on github https://github.com/SteveUlin/ComplexNonsense.
 
-#### Wait, how does my computer find the closest Point of Presence?
+### Static Site Generation with Eleventy
 
-This is all well and good, but how does my computer know which Point of Presence
-to connect to? There are two main strategies for routing traffic to a
-CDN's Point of Presence: DNS trickery and Anycast.
+First we need a website to host. [Eleventy](https://www.11ty.dev) is a npm
+package that generates static sites from templates. It is a great tool for
+generating a static site from markdown files.
 
-- DNS trickery
-
-  The first strategy is to use DNS to route traffic to the closest Point of
-  Presence.  You network provider already routes DNS traffic to the closest DNS
-  server. So based on the geolocation of the DNS server, CDNs will list different
-  IP addresses for the same domain. This routes traffic to the closest Point of
-  Presence.
-
-- Anycast
-
-  There are 4 main ways of sending information across a network: Unicast, Multicast,
-  Broadcast, and Anycast.
-
-  - Unicast: Send information to a single destination. This is the most common way
-    of sending information.
-  - Multicast: Send information to multiple destinations. This is useful for
-    sending information to a group of computers.
-  - Broadcast: Send information to all destinations that opt in. This is useful
-    for sending information to all computers on a network.
-  - Anycast: Send information to the closest destination. This is useful for
-    sending information to the closest computer.
-
-  With Anycast each Point of Presence will have the same IP address. When a
-  computer tries to connect to a Point of Presence, the computer will automatically
-  connect to the closest Point of Presence.
-
-## Implementation
-
-The goal of this project is to create a static website that is hosted on AWS and
-serve this content from a CDN.
-
-The following goes over some of the steps I took to implement this website. You
-can view the code on github https://github.com/SteveUlin/ComplexNonsense.
-
-### Static Site Generation
-There are a lot of [static site generators](https://jamstack.org/generators/).
-[Eleventy](https://www.11ty.dev) distinguishes itself by:
-
-- having an active user base
-- being actively developed
-- being a node package
-
-As Eleventy is a node package, I can manage my entire website through
-[npm](https://www.npmjs.com/).
-
-### CSS
-
-[Tailwindcss](https://tailwindcss.com/) makes playing with CSS easy. It provides
-reasonable defaults while being flexible enough to make more or less any UI. As
-someone without much font end development experience, this is a wonderful tool.
+11ty has great documentation and a large community. I won't go into detail on
+how to use it here, but their Getting Started guide is a great place to begin.
+https://www.11ty.dev/docs/getting-started/
 
 ### Hosting
 
 [AWS Amplify](https://aws.amazon.com/amplify/) builds out the dev ops for static
-site hosing. All you need to do is point it at your git repository and it will
+site hosing. All you need to do is point it at your git repository, and Amplify will
 build and host your site.
 
-We can check that this site is being served by AWS's CDN by using
-pinging on a couple of different EC2 Locations and seeing different servers.
+There is a CLI that you can use to configure your site. But I found it easier
+to just use the web interface. https://aws.amazon.com/amplify/getting-started/
+
+Once the site is hosted, we can verify that this site is being served by AWS's
+CDN by using pinging on a couple of different EC2 Locations and seeing different
+servers.
 
 ```shell
 $ ping complexnonsense.com
@@ -195,6 +149,11 @@ PING complexnonsense.com (99.84.66.82) 56(84) bytes of data.
 
 ## Conclusion
 
+In conclusion, Content Delivery Networks (CDNs) play a crucial role in improving
+website performance by reducing latency and speeding up content delivery. AWS
+Amplify makes it easy to deploy and host a static website on a CDN, ensuring
+your content is quickly accessible to users around the world.
+
 I am happy with the format of this post, not only solving System Design
 problems but also implementing a solution. I hope to continue this format
 in the future.
@@ -203,8 +162,8 @@ Thanks for reading!
 
 ## References
 
-- [Byte Byte Go](https://bytebytego.com/)
-- [Wikipedia](https://en.wikipedia.org/wiki/Content_delivery_network)
+- [Byte Byte Go (System Design Books)](https://bytebytego.com/)
+- [Wikipedia CDN](https://en.wikipedia.org/wiki/Content_delivery_network)
 - [AWS Amplify](https://aws.amazon.com/amplify/)
 - [Eleventy](https://www.11ty.dev)
 - [Tailwindcss](https://tailwindcss.com/)
