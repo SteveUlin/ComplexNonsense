@@ -1,6 +1,5 @@
 ---
 title: Making Your Website Blazingly Fast with Content Delivery Networks and AWS Amplify
-title: How would you make a website blazingly fast!?
 date: 2023-02-22
 tldr:
   In this article, I provide an overview of Content Delivery Networks (CDNs).
@@ -15,9 +14,21 @@ works and why some website might be slow to load slow.
 
 ### How does the internet work? (DNS)
 
+Here is the basic flow of how a request to a website is handled.
+
+{% nomnoml %}
+[<actor> User] <-> [Web Browser]
+[Web Browser] <-> [Router]
+[Router] <-> [DNS Name Server]
+
+[Web Browser] <-> [Router]
+[Router] <-> [<reference> More Routers]
+[More Routers] <-> [Web Server]
+{% endnomnoml %}
+
 When trying to connect to 'google.com', your computer needs to first convert the
 domain name to an IP address like '142.251.32.46'. These mapping are stored in a
-[DNS](https://en.wikipedia.org/wiki/Domain_Name_System) servers. The DNS servers
+[DNS](https://en.wikipedia.org/wiki/Domain_Name_System) Name servers. These DNS servers
 are globally distributed and owned by a number of different companies.
 The closer you are to a DNS server, the faster the lookup will be.
 
@@ -49,6 +60,9 @@ google.com.             74      IN      A       142.251.32.46
 ```
 
 At the bottom we can see that it took 11 milliseconds to resolve the IP address.
+
+#### Brief digression on DNS caching
+
 This is so incredibly slow 🙃 that there are 3 separate caches that try to
 circumvent the DNS lookup. First your browser will cache the IP address. If that
 lookup fails, your operating system also has a cache. Finally, if operating
@@ -97,7 +111,11 @@ It takes a total of 23 hops to get to google.com from my EC2 instance in London.
 
 ### Content Delivery Networks (CDNs)
 
-A Content Delivery Network (CDN) is a system of distributed servers that deliver web content to users based on their geographic location. The main goal of a CDN is to serve content to users as quickly and efficiently as possible. By caching and serving content from servers closer to users, CDNs can significantly reduce latency and improve website performance
+A Content Delivery Network (CDN) is a system of distributed servers that deliver
+web content to users based on their geographic location. The main goal of a CDN
+is to serve content to users as quickly and efficiently as possible. By caching
+and serving content from servers closer to users, CDNs can significantly reduce
+latency and improve website performance
 
 ## AWS Amplify
 
