@@ -1,6 +1,5 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const markdownIt = require("markdown-it");
-const svgo = require("svgo");
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ assets: "/" });
@@ -12,10 +11,8 @@ module.exports = function (eleventyConfig) {
     watch: ["_site/css/tailwind.css"],
   });
   eleventyConfig.addFilter("date", require("./filters/day"));
-  eleventyConfig.addPairedShortcode("nomnoml", (content) => {
-    let svg = require("nomnoml").renderSvg(content);
-    return svgo.optimize(svg, { multipass: true }).data;
-  });
+  eleventyConfig.addShortcode("hashgrid", require("./shortcodes/hashgrid"));
+  eleventyConfig.addPairedShortcode("nomnoml", require("./shortcodes/nomnoml"));
 
   let options = {
     html: true,
