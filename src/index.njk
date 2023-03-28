@@ -12,13 +12,14 @@ eleventyImport:
     <h2 class="text-2xl font-bold">Recent Blogposts</h2>
     {% for post in collections.post %}
       <a class="block p-3" href="{{ post.url }}">
-        <h3 class="text-xl font-bold">
-          {{ post.data.title }}
-          {% if post.data.series %}
-            <p class="text-sm text-gray-900 pl-3">{{ post.data.series }}</p>
-          {% endif %}
-          <p class="pl-3 text-sm text-gray-600 font-light">{{ post.date | date }}</p>
-        </h3>
+        <div class="flex gap-1 items-end">
+          <div class="aspect-square h-11 mb-2">{% hashgrid post.fileSlug %}</div>
+          <h3 class="text-xl font-bold">{{ post.data.title }}</h3>
+        </div>
+        {% if post.data.series %}
+          <hp class="text-sm text-gray-900 pl-3">{{ post.data.series }}</p>
+        {% endif %}
+        <p class="pl-3 text-sm text-gray-600 font-light">{{ post.date | date }}</p>
         <p class="pl-3">{{ post.data.tldr}}</p>
       </a>
     {% endfor %}

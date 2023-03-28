@@ -2,11 +2,18 @@
 layout: default
 ---
 
-<div class="max-w-3xl mx-3">
+<div class="mx-3">
   <!-- title -->
   <div class="p-3 md:mb-3 md:rounded bg-slate-50 shadow-md">
-    <h1 class="text-4xl text-slate font-sans font-bold">{{ title }}</h1>
-    <p class="px-8 text-2xl text-slate-600 font-sans font-bold">{{ date | date }}</p>
+    <div class="flex gap-3 items-end">
+      <div class="my-2 aspect-square h-24">
+        {% hashgrid page.fileSlug %}
+      </div>
+      <div class="">
+        <h1 class="text-xl md:text-4xl text-slate font-sans font-bold">{{ title }}</h1>
+        <p class="text-2xl text-slate-600 font-sans font-bold">{{ date | date }}</p>
+      </div>
+    </div>
   </div>
   <article class="p-3 max-w-none prose sm:prose-md md:mb-3 md:rounded bg-slate-50 shadow-md">
     {% if tldr%}

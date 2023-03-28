@@ -1,4 +1,6 @@
 ---
+title: List of Lists
+layout: blog
 ---
 
 ## Interesting Computer Science Puzzles

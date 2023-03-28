@@ -6,7 +6,26 @@ module.exports = {
     "./_site/**/*.{html,js}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        'hash-1': '#f44336',
+        'hash-2': '#e91e63',
+        'hash-3': '#9c27b0',
+        'hash-4': '#673ab7',
+        'hash-5': '#3f51b5',
+        'hash-6': '#2196f3',
+        'hash-7': '#03a9f4',
+        'hash-8': '#00bcd4',
+        'hash-9': '#009688',
+        'hash-10': '#4caf50',
+        'hash-11': '#8bc34a',
+        'hash-12': '#cddc39',
+        'hash-13': '#ffeb3b',
+        'hash-14': '#ffc107',
+        'hash-15': '#ff9800',
+        'hash-16': '#ff5722',
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/typography'),
