@@ -1,7 +1,13 @@
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const webc = require("@11ty/eleventy-plugin-webc");
 const markdownIt = require("markdown-it");
 
-module.exports = function (eleventyConfig) {
+module.exports = function(eleventyConfig) {
+  eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(webc, {
+    components: "src/_components/**/*.webc"
+  });
+
   eleventyConfig.addPassthroughCopy({ assets: "/" });
   eleventyConfig.addPassthroughCopy({
     "node_modules/prism-themes/themes/prism-gruvbox-dark.min.css":
@@ -21,7 +27,6 @@ module.exports = function (eleventyConfig) {
   };
 
   eleventyConfig.setLibrary("md", markdownIt(options));
-  eleventyConfig.addPlugin(syntaxHighlight);
   return {
     dir: {
       input: "src",

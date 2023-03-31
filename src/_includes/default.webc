@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="autor" content="Steven Ulin">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/tailwind.css" webc:keep>
+  <link rel="stylesheet" href="/css/prism.css" webc:keep>
+  <script @html="getBundle('js')" webc:raw webc:keep></script>
+</head>
+
+<body class="bg-slate-300 bg-grid-slate-400/50">
+  <div class="max-w-5xl mx-auto">
+    <navbar></navbar>
+    <div @raw="content"></div>
+  </div>
+  <script @html="getBundle('js', 'defer')" webc:raw webc:keep></script>
+</body>
+
+</html>

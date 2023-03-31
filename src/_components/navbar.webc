@@ -1,0 +1,60 @@
+<script webc:setup>
+  const nav_items = [
+    {title: "Home", path: "/"},
+    {title: "Blog", path: "/blog"},
+    {title: "About", path: "/about"},
+  ];
+</script>
+
+<nav>
+
+  <!-- Large Screen Nav -->
+  <div class="max-md:hidden m-3 p-4 rounded bg-slate-50 shadow-md">
+    <div class="flex justify-between align-middle">
+      <a class="font-sans text-2xl font-bold" href="/">Complex Nonsense. 🙃</a>
+      <ul class="flex space-x-10">
+        <template webc:for="obj of nav_items" webc:nokeep>
+          <li class="group transition duration-700 ease-in-out hover:-translate-y-1">
+            <a class="text-xl" :href="obj.path" @text="obj.title"></a>
+            <div class="h-1 w-0 bg-gray-800
+                            transition-[width] duration-700 ease-in-out group-hover:w-full"></div>
+          </li>
+        </template>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Hamburger Menu -->
+  <div class="md:hidden p-3 mx-auto align-middle lg:hidden bg-slate-50">
+    <div class="flex justify-between">
+      <a class="font-sans text-2xl font-bold" href="/">Complex Nonsense. 🙃</a>
+      <button id="hamburger" class="space-y-1 pr-2">
+        <div class="h-0.5 w-5 bg-gray-900"></div>
+        <div class="h-0.5 w-5 bg-gray-900"></div>
+        <div class="h-0.5 w-5 bg-gray-900"></div>
+      </button>
+    </div>
+    <div class="mt-2 h-2 w-full bg-gray-900"></div>
+    <div id="menu" class="hidden">
+      <ul class="w-full text-2xl font-sans">
+        <template webc:for="obj of nav_items" webc:nokeep>
+          <li class="border-b-2 border-gray-900">
+            <a class="block px-6 py-2" :href="obj.path" @text="obj.title"></a>
+          </li>
+        </template>
+      </ul>
+    </div>
+  </div>
+
+</nav>
+
+<script webc:bucket="defer">
+
+  const hamburger = document.querySelector('#hamburger');
+  const menu = document.querySelector('#menu');
+
+  hamburger.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+  });
+
+</script>
