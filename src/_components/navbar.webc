@@ -9,7 +9,7 @@
 <nav>
 
   <!-- Large Screen Nav -->
-  <div class="max-md:hidden m-3 p-4 rounded bg-slate-50 shadow-md">
+  <div class="max-md:hidden mt-3 mb-3 p-4 rounded bg-slate-50 shadow-md">
     <div class="flex justify-between align-middle">
       <a class="font-sans text-2xl font-bold" href="/">Complex Nonsense. 🙃</a>
       <ul class="flex space-x-10">

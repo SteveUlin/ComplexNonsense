@@ -1,0 +1,29 @@
+---
+layout: default.webc
+eleventyImport:
+collections: ["post"]
+---
+
+<div class="md:my-3 p-3 md:rounded bg-slate-50 text-lg shadow-md">
+  Math, Compute, and Distributed Systems.
+</div>
+
+<div class="flex my-3">
+  <!-- Card listing recent blogposts -->
+  <div class="p-3 max-w-xl md:rounded bg-slate-50 text-lg shadow-md">
+    <h2 class="text-2xl font-bold">Recent Blogposts</h2>
+    <template webc:for="post of collections.post" webc:nokeep>
+      <a class="block p-3" :href="post.url">
+        <div class="flex gap-1 items-end">
+          <div class="aspect-square h-11 mb-2">
+            <hashgrid :@key="post.fileSlug"></hashgrid>
+          </div>
+          <h3 class="text-xl font-bold" @text="post.data.title"></h3>
+        </div>
+        <p class="text-sm text-gray-900 pl-3" webc:if="post.data.series" @text="post.data.series"></p>
+        <time class="pl-3 text-sm text-gray-600 font-light" :@value="post.date"></time>
+        <p class="pl-3" @text="post.data.tldr"></p>
+      </a>
+    </template>
+  </div>
+</div>

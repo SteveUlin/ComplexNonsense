@@ -1,0 +1,15 @@
+---
+layout: default.webc
+eleventyImport:
+collections: ["post"]
+---
+
+<div class="p-3 rounded bg-slate-50 shadow-md">
+  <h1 class="text-3xl font-bold">Blog Posts</h1>
+
+  <ul class="p-5 list-disc text-xl underline" webc:for="post of collections.post">
+    <li>
+      <a :href="post.url" @text="post.data.title"> </a>
+    </li>
+  </ul>
+</div>

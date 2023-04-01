@@ -1,0 +1,51 @@
+<script webc:setup>
+  const gridSize = 8;
+</script>
+
+<div :class="`grid grid-cols-${gridSize} w-full h-full`">
+  <script webc:type="js">
+    if (key === undefined) {
+      throw new Error("Key is undefined");
+    }
+
+    const crypto = require("crypto");
+
+    // Generates a grid of booleans from a hash
+    //
+    // Precondition: hash is a hex string
+    function generateGridFromHash(hash) {
+      const grid = [];
+
+      for (let i = 0; i < gridSize; i++) {
+        grid[i] = [];
+        for (let j = 0; j < gridSize; j++) {
+          const index = i * gridSize + j;
+          // Each char in the hash is a hex character.
+          // Give 50% for a grid cell to be filled in.
+          grid[i][j] = hash[index % hash.length] >= "7";
+        }
+      }
+
+      return grid;
+    }
+
+    function getColorFromHashChar(hashChar) {
+      const color = parseInt(hashChar, 16);
+      return `bg-hash-${color}`;
+    }
+
+    const hash = crypto.createHash("sha512").update(key).digest("hex");
+    const grid = generateGridFromHash(hash);
+    const colorClass = getColorFromHashChar(hash[16]);
+
+    let output = "";
+    grid.forEach((row) => {
+      row.forEach((cell) => {
+        const color = cell ? colorClass : "bg-transparent";
+        output += `<div class="${color}"></div>`;
+      });
+    });
+
+    output;
+  </script>
+</div>
