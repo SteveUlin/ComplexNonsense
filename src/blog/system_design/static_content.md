@@ -10,11 +10,7 @@ tldr:
 ## How do you serve websites globally with low latency?
 
 To answer the above question, we first need to talk a bit about how networking
-works and why some website might be slow to load slow.
-
-### How does the internet work? (DNS)
-
-Here is the basic flow of how a request to a website is handled.
+works and why some website might be slow to load.
 
 {% nomnoml %}
 [<actor> User] <-> [Web Browser]
@@ -61,14 +57,14 @@ google.com.             74      IN      A       142.251.32.46
 
 At the bottom we can see that it took 11 milliseconds to resolve the IP address.
 
-#### Brief digression on DNS caching
+### Brief digression on DNS caching
 
 This is so incredibly slow 🙃 that there are 3 separate caches that try to
 circumvent the DNS lookup. First your browser will cache the IP address. If that
 lookup fails, your operating system also has a cache. Finally, if operating
 system lookup fails, your router also caches the IP address mapping.
 
-### How does the internet work? (Routing)
+## IP Routing
 
 Now that we have an IP address, we need to connect to the "computer" that is
 associated with the IP. As a gross generalization, the internet is just a bunch
@@ -117,14 +113,19 @@ is to serve content to users as quickly and efficiently as possible. By caching
 and serving content from servers closer to users, CDNs can significantly reduce
 latency and improve website performance
 
-## AWS Amplify
+## Implementation
+
+Now that we know what CDNs are, we can demonstrate how CDNs work by building
+this website.
+
+You can view the code for this site on github https://github.com/SteveUlin/ComplexNonsense.
+
+### AWS Amplify 
 
 [AWS Amplify](https://aws.amazon.com/amplify/) is a set of tools and services
-that help you build, deploy, and host scalable and fast web applications. In
-this example, we will create a simple static website (this website) and deploy
-it to AWS S3 and the AWS CloudFront CDN using AWS Amplify.
-
-You can view the code on github https://github.com/SteveUlin/ComplexNonsense.
+build over standard AWS offerings that help you build, deploy, and host scalable
+and fast web applications. Amplify utilizes AWS S3 and AWS CloudFront CDN to serve
+content fast.
 
 ### Static Site Generation with Eleventy
 
@@ -184,5 +185,3 @@ Thanks for reading!
 - [Wikipedia CDN](https://en.wikipedia.org/wiki/Content_delivery_network)
 - [AWS Amplify](https://aws.amazon.com/amplify/)
 - [Eleventy](https://www.11ty.dev)
-- [Tailwindcss](https://tailwindcss.com/)
-- [Load Balancing Without Load Balancers](https://blog.cloudflare.com/cloudflares-architecture-eliminating-single-p/)
