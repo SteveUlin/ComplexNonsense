@@ -10,7 +10,7 @@ tldr:
 ## How do you serve websites globally with low latency?
 
 To answer the above question, we first need to talk a bit about how networking
-works and why some website might be slow to load.
+works and why some websites might be slow to load.
 
 {% nomnoml %}
 [<actor> User] <-> [Web Browser]
