@@ -16,8 +16,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setServerOptions({
     watch: ["_site/css/tailwind.css"],
   });
-  eleventyConfig.addFilter("date", require("./filters/day"));
-  eleventyConfig.addShortcode("hashgrid", require("./shortcodes/hashgrid"));
   eleventyConfig.addPairedShortcode("nomnoml", require("./shortcodes/nomnoml"));
 
   let options = {
